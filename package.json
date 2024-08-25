@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf build/*",
-    "build": "yarn clean && npx babel src --out-dir build",
+    "build": "npm run clean && npx babel src --out-dir build",
     "lint": "flow && eslint --fix src",
     "prepare": "npm run build"
   },
