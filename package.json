@@ -6,6 +6,7 @@
   "repository": "https://github.com/chrisrzhou/react-wordcloud",
   "author": "Chris Zhou <christoper.r.zhou@gmail.com>",
   "license": "MIT",
+  "type":"commonjs",
   "scripts": {
     "clean": "rimraf build/*",
     "build": "npm run clean && npx babel src --out-dir build",

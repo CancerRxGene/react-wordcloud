@@ -11,6 +11,7 @@ var d3Scale = _interopRequireWildcard(require("d3-scale"));
 var _d3Selection = _interopRequireWildcard(require("d3-selection"));
 var d3Selection = _d3Selection;
 var d3SelectionMulti = _interopRequireWildcard(require("d3-selection-multi"));
+var d3ScaleChromatic = _interopRequireWildcard(require("d3-scale-chromatic"));
 var _invariant = _interopRequireDefault(require("invariant"));
 var _lodash = _interopRequireDefault(require("lodash"));
 var _tooltip = _interopRequireDefault(require("./tooltip"));
@@ -38,7 +39,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  *
  * 
  */
-var d3 = _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, d3Array), d3Scale), d3Selection), d3SelectionMulti);
+var d3 = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, d3Array), d3Scale), d3Selection), d3SelectionMulti), d3ScaleChromatic);
 
 // min values are required because the layout will take too long to compute
 // recursively if small values are provided
@@ -303,7 +304,9 @@ _defineProperty(WordCloud, "defaultProps", {
   minFontSize: 10,
   maxFontSize: 100
 });
-var DEFAULT_COLORS = d3.range(20).map(d3.scaleOrdinal(d3.schemeCategory10));
+console.log(d3.schemeCategory10);
+var scale = d3.scaleOrdinal(d3.schemeCategory10);
+var DEFAULT_COLORS = d3.range(20).map(scale);
 var _chooseRandom = function _chooseRandom(array) {
   return array[Math.floor(Math.random() * array.length)];
 };

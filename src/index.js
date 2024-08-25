@@ -12,6 +12,7 @@ import * as d3Scale from 'd3-scale';
 import * as d3Selection from 'd3-selection';
 import {event as currentEvent} from 'd3-selection';
 import * as d3SelectionMulti from 'd3-selection-multi';
+import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import invariant from 'invariant';
 import _ from 'lodash';
 
@@ -22,6 +23,7 @@ const d3 = {
   ...d3Scale,
   ...d3Selection,
   ...d3SelectionMulti,
+  ...d3ScaleChromatic,
 };
 
 // min values are required because the layout will take too long to compute
@@ -415,9 +417,11 @@ class WordCloud extends React.Component<TProps, TState> {
   }
 }
 
+console.log(d3.schemeCategory10);
+const scale = d3.scaleOrdinal(d3.schemeCategory10);
 const DEFAULT_COLORS: Array<string> = d3
   .range(20)
-  .map(d3.scaleOrdinal(d3.schemeCategory10));
+  .map(scale);
 
 const _chooseRandom = (array: Array<any>): any => {
   return array[Math.floor(Math.random() * array.length)];
