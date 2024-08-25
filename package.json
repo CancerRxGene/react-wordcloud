@@ -18,7 +18,6 @@
     "d3-cloud": "^1.2.4",
     "d3-scale": "^4.0.2",
     "d3-selection": "^1.1.0",
-    "d3-selection-multi": "^0.3.0",
     "invariant": "^2.2.2",
     "lodash": "^4.17.4",
     "react": "^16.0.0",

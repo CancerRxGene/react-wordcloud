@@ -6,25 +6,12 @@
  */
 
 import * as React from 'react';
-import * as d3Array from 'd3-array';
 import cloud from 'd3-cloud';
-import * as d3Scale from 'd3-scale';
-import * as d3Selection from 'd3-selection';
-import {event as currentEvent} from 'd3-selection';
-import * as d3SelectionMulti from 'd3-selection-multi';
-import * as d3ScaleChromatic from 'd3-scale-chromatic';
 import invariant from 'invariant';
 import _ from 'lodash';
+import * as d3 from 'd3';
 
 import Tooltip from './tooltip';
-
-const d3 = {
-  ...d3Array,
-  ...d3Scale,
-  ...d3Selection,
-  ...d3SelectionMulti,
-  ...d3ScaleChromatic,
-};
 
 // min values are required because the layout will take too long to compute
 // recursively if small values are provided
@@ -253,11 +240,10 @@ class WordCloud extends React.Component<TProps, TState> {
     } = props;
     // update svg/vis nodes dimensions
     this._setDimensions(height, width);
+    console.log("This ._svg is", this._svg)
     this._svg
-      .attrs({
-        height: this._height,
-        width: this._width,
-      })
+      .attr('height', this._height)
+      .attr('width', this._width)
       .style('background-color', 'white');
     this._vis.attr(
       'transform',
@@ -320,31 +306,25 @@ class WordCloud extends React.Component<TProps, TState> {
       .on('click', onWordClick)
       .on('mouseover', this._onMouseOver)
       .on('mouseout', this._onMouseOut)
-      .attrs({
-        cursor: onWordClick ? 'pointer' : 'default',
-        fill: this._colorScale,
-        'font-family': fontFamily,
-        'text-anchor': 'middle',
-        transform: 'translate(0, 0) rotate(0)',
-      })
+      .attr('cursor', onWordClick? 'pointer': 'default')
+      .attr('fill', this._colorScale)
+      .attr('font-family', fontFamily)
+      .attr('text-anchor', 'middle')
+      .attr('transform', 'translate(0,0) rotate(0)')
       .transition()
       .duration(transitionDuration)
-      .attrs({
-        'font-size': (d: Object): string => `${d.size}px`,
-        transform: this._transformText,
-      })
+      .attr('font-size', (d: Object): string => `${d.size}px`)
+      .attr('transform', this._transformText)
       .text(this._setText);
 
     // update transition
     this._words
       .transition()
       .duration(transitionDuration)
-      .attrs({
-        fill: this._colorScale,
-        'font-family': fontFamily,
-        'font-size': (d: Object): string => `${d.size}px`,
-        transform: this._transformText,
-      })
+      .attr('fill', this._colorScale)
+      .attr('font-family', fontFamily)
+      .attr('font-size', (d: Object): string => `${d.size}px`)
+      .attr('transform', this._transformText)
       .text(this._setText);
 
     // exit transition
@@ -382,8 +362,8 @@ class WordCloud extends React.Component<TProps, TState> {
       this.setState({
         tooltipContent,
         tooltipEnabled: true,
-        tooltipX: currentEvent.clientX,
-        tooltipY: currentEvent.clientY - 28,
+        tooltipX: d3.event.clientX,
+        tooltipY: d3.event.clientY - 28,
       });
     }
   };
