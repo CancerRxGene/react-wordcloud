@@ -30,7 +30,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
  * Powerful React + D3 word cloud component with rich features.
  * Based on the original word cloud generator: https://www.jasondavies.com/wordcloud/.
  *
- * 
+ *
  */
 // min values are required because the layout will take too long to compute
 // recursively if small values are provided
@@ -70,8 +70,8 @@ var WordCloud = /*#__PURE__*/function (_React$Component) {
         _this.setState({
           tooltipContent: tooltipContent,
           tooltipEnabled: true,
-          tooltipX: d3.event.clientX,
-          tooltipY: d3.event.clientY - 28
+          tooltipX: event.clientX,
+          tooltipY: event.clientY - 28
         });
       }
     });
