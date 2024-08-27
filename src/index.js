@@ -362,8 +362,8 @@ class WordCloud extends React.Component<TProps, TState> {
       this.setState({
         tooltipContent,
         tooltipEnabled: true,
-        tooltipX: d3.event.clientX,
-        tooltipY: d3.event.clientY - 28,
+        tooltipX: event.clientX,
+        tooltipY: event.clientY - 28,
       });
     }
   };
