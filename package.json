@@ -19,7 +19,7 @@
     "d3-scale": "^4.0.2",
     "d3-selection": "^1.1.0",
     "invariant": "^2.2.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.23",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
